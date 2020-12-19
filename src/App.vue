@@ -9,14 +9,14 @@
         <button @click="setFavHero(hero.name)">Set Fav</button>
       </li>
     </ul>
-    <input type="text" ref='heroInput' />
+    <input type="text" ref='heroInput' class='rm-2' />
     <button v-if="!updateHero" @click='addHero'>Set New Hero</button>
     <button v-else @click='updateHeroMethod'>Update Hero</button>
     <div v-if="favHeroes.length > 0">
       <h2>Favourite Heroes</h2>
-      <ul>
+      <ol>
         <li class='bm-2' v-for='(hero,index) in favHeroes' :key='index' v-text="hero.name"></li>
-      </ul>
+      </ol>
     </div>
   </div>    
 </template>
@@ -55,18 +55,35 @@ export default {
   },
   methods:{
     addHero(){
+      
+      //Basic Validation
+      if( this.$refs['heroInput'].value == "" ){
+        this.$refs['heroInput'].focus();
+        return alert("Name Cannot Be Empty");
+        
+      }
       const name = this.$refs['heroInput'].value;
+      
+      this.$refs['heroInput'].value = '';
+      
       this.heroes.push( {name} )
     },
     editHero(heroName,index){
-      this.updateHero = true;
-      this.heroToUpdate = index;
-      this.$refs['heroInput'].value = heroName;
+      this.updateHero = true
+      this.heroToUpdate = index
+      this.$refs['heroInput'].value = heroName
     },
     deleteHero(heroName){
      this.heroes = this.heroes.filter( (hero) => hero.name != heroName ) 
     },
     updateHeroMethod(){
+      
+      //Basic Validation
+      if( this.$refs['heroInput'].value == "" ){
+        this.$refs['heroInput'].focus();
+        return alert("Name Cannot Be Empty");
+      }
+
       this.heroes[this.heroToUpdate].name =  this.$refs['heroInput'].value;
     },
     setFavHero(name){
