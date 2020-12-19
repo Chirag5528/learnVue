@@ -2,22 +2,27 @@
   <div>
     <h2>Active Hero</h2>
     <ul>
-      <li v-for="(hero,index) in heroes" :key='index' class='bottom-margin-2'>
-        <span v-text="hero.name" class="right-margin-2"></span>
-        <button class="right-margin-2" @click="editHero(hero.name, index)">Edit Me</button>
-        <button @click="deleteHero(hero.name)">Delete Me</button>
+      <li v-for="(hero,index) in heroes" :key='index' class='bm-2'>
+        <span v-text="hero.name" class="rm-2"></span>
+        <button class="rm-2" @click="editHero(hero.name, index)">Edit Me</button>
+        <button class="rm-2" @click="deleteHero(hero.name)">Delete Me</button>
+        <button @click="setFavHero(hero.name)">Set Fav</button>
       </li>
     </ul>
     <input type="text" ref='heroInput' />
     <button v-if="!updateHero" @click='addHero'>Set New Hero</button>
     <button v-else @click='updateHeroMethod'>Update Hero</button>
+    <div v-if="favHeroes.length > 0">
+      <h2>Favourite Heroes</h2>
+      <ul>
+        <li class='bm-2' v-for='(hero,index) in favHeroes' :key='index' v-text="hero.name"></li>
+      </ul>
+    </div>
   </div>    
 </template>
 
 
 <script>
-
-
 export default {
   name: 'App',
   components: {
@@ -27,6 +32,7 @@ export default {
     return {
       updateHero:false,
       heroToUpdate:0,
+      favHeroes: [],
       heroes:[
         {
           name:'Superman'
@@ -62,8 +68,10 @@ export default {
     },
     updateHeroMethod(){
       this.heroes[this.heroToUpdate].name =  this.$refs['heroInput'].value;
-    }
-      
+    },
+    setFavHero(name){
+      this.favHeroes.push( { name:name } );
+    },
   }
 }
 </script>
@@ -73,14 +81,13 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
-.right-margin-2{
+.rm-2{
   margin-right:2em;
 }
-.bottom-margin-2{
+.bm-2{
   margin-bottom:2em;
 }
 </style>
