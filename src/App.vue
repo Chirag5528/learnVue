@@ -1,6 +1,23 @@
 <template>
-  <div>
-    <h2>Active Hero</h2>
+  <div class="bg-gray-200 flex flex-col items-center justify-center h-screen">
+    <div class="bg-white p-12 rounded-lg">
+      <div class="dateToday flex flex-row w-full">
+        <div class="fullDate w-1/2">
+          <div class="flex">
+            <div>
+              <h4 class='text-gray-800' v-text="dateToday.day"></h4>
+            </div>
+            <div>
+              <h6 class='' v-text="dateToday.month"></h6>
+              <h6 class='' v-text="dateToday.year"></h6>
+            </div>
+          </div>
+        </div>
+        <div class="day w-1/2 text-right">
+          <h4 class="dayName" v-text="dateToday.dayName"></h4>
+        </div>
+        
+      </div>
     <ul>
       <li v-for="(hero,index) in heroes" :key='index' class='bm-2'>
         <span v-text="hero.name" class="rm-2"></span>
@@ -18,7 +35,9 @@
         <li class='bm-2' v-for='(hero,index) in favHeroes' :key='index' v-text="hero.name"></li>
       </ol>
     </div>
-  </div>    
+  </div>  
+  </div>
+    
 </template>
 
 
@@ -30,6 +49,12 @@ export default {
   },
   data:function(){
     return {
+      dateToday:{
+        day: new Date().getDate(),
+        dayName:new Date().toLocaleString('default', { weekday: 'long' }),
+        month:new Date().toLocaleString('default', { month: 'short' }),
+        year:new Date().getFullYear()
+      },
       updateHero:false,
       heroToUpdate:0,
       favHeroes: [],
@@ -98,8 +123,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
+  /* color: #2c3e50; */
+  /* margin-top: 60px; */
 }
 .rm-2{
   margin-right:2em;
