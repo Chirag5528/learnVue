@@ -30,9 +30,7 @@
                     }
                 }
             },
-            created(){
-                console.log( this.dateToday );
-            }
+            created(){}
         }
 
 </script>
