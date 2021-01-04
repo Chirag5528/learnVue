@@ -33,3 +33,21 @@
 .btn-danger span{
     @apply hidden md:inline-block;
 }
+.card{
+    @apply bg-white rounded h-screen px-32 py-4 w-full
+}
+.card-head h3{
+    @apply text-4xl text-center
+}
+.days{
+    @apply flex justify-center mt-6
+}
+.days ul{
+    @apply grid text-center grid-cols-7 text-white bg-red-400 px-8 w-full
+}
+.numberDays{
+    @apply flex justify-center
+}
+.numberDays ul{
+    @apply grid text-center grid-cols-7 text-white bg-blue-400 py-4 px-10 w-full
+}
