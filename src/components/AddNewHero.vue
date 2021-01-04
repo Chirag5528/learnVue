@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-3">
+    <div class="grid grid-cols-3 gap-16">
       <input type="text" ref='heroInput' class='rm-2 col-span-2 input-control'/>
         <button class="btn-indigo col-span-1"  v-if="!isUpdate" @click='addHero'>Set New Hero</button>
         <button class="btn-indigo col-span-1"  v-else @click='updateHeroMethod'>Update Hero</button>
