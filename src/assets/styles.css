@@ -34,13 +34,13 @@
   @apply hidden md:inline-block;
 }
 .card {
-  @apply bg-white rounded h-screen px-32 py-4 w-full max-w-screen-lg;
+  @apply bg-white rounded h-screen lg:px-32 lg:py-4 sm:p-4 w-full max-w-screen-lg;
 }
 .card-head h3 {
-  @apply text-4xl text-center;
+  @apply lg:text-4xl md:text-center md:text-2xl;
 }
 .days {
-  @apply flex justify-center mt-6;
+  @apply flex lg:justify-center md:justify-between mt-6;
 }
 .days ul li:first-child,
 .days ul li:last-child {

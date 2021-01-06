@@ -1,22 +1,22 @@
 <template>
-  <div class="wrapper px-40 py-36">
+  <div class="wrapper md:px-40 md:py-36 sm:p-10">
       <div class="card">
         <div class="card-head text-blue-400">
           <h3>Calendar App</h3>
         </div>
         <div class="monthRow">
-            <h3 class="text-4xl text-blue-400">{{ month }}</h3>
-            <h3 class="text-4xl text-right text-blue-400">{{ year }}</h3>
+            <h3 class="lg:text-4xl md:text-2xl  text-blue-400">{{ month }}</h3>
+            <h3 class="lg:text-4xl md:text-2xl md:text-right text-blue-400">{{ year }}</h3>
         </div>
         <div class="days">
             <ul>
-                <li v-for="(day,index) in days" class="text-2xl" :key='index' v-text="day"></li>
+                <li v-for="(day,index) in days" class="lg:text-2xl md:xl" :key='index' v-text="day"></li>
             </ul>
         </div>
         <div class="numberDays">
           <ul>
               <li v-for="x in startIndex" :key="x"></li>
-              <li v-for="x in daysInMonth" class="text-2xl w-full" :key="x">
+              <li v-for="x in daysInMonth" class="lg:text-2xl md:xl w-full" :key="x">
                 <span :class="[ ( today(x) ? 'activeDay'  : '' )]" >{{ x }}</span>
               </li>
             </ul>
