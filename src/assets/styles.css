@@ -1,53 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.wrapper{
-    @apply bg-gray-200 flex flex-col items-center justify-center h-screen font-nunito font-bold;
+.wrapper {
+  @apply bg-gray-200 flex flex-col items-center justify-center h-screen font-nunito font-bold;
 }
 .btn-success {
-    @apply p-1 md:px-4 md:py-1 border border-green-500 rounded-full text-green-500 text-sm hover:text-white hover:bg-green-500 text-center;
+  @apply p-1 md:px-4 md:py-1 border border-green-500 rounded-full text-green-500 text-sm hover:text-white hover:bg-green-500 text-center;
 }
 
 .btn-warning {
-    @apply p-1 md:px-4 md:py-1 border border-yellow-500 rounded-full text-yellow-500 text-sm hover:text-white hover:bg-yellow-500 text-center;
+  @apply p-1 md:px-4 md:py-1 border border-yellow-500 rounded-full text-yellow-500 text-sm hover:text-white hover:bg-yellow-500 text-center;
 }
 
-.btn-danger{
-    @apply p-1 md:px-4 md:py-1 border border-red-500 rounded-full text-red-500 text-sm hover:text-white hover:bg-red-500 text-center;
+.btn-danger {
+  @apply p-1 md:px-4 md:py-1 border border-red-500 rounded-full text-red-500 text-sm hover:text-white hover:bg-red-500 text-center;
 }
-.input-control{
-    @apply border border-gray-400 focus:ring-green-800 focus:border-transparent rounded;
+.input-control {
+  @apply border border-gray-400 focus:ring-green-800 focus:border-transparent rounded;
 }
-.btn-indigo{
-     @apply p-1 md:px-4 md:py-1 border border-indigo-600 rounded-full text-indigo-600 text-sm hover:text-white hover:bg-indigo-600 hover:shadow text-center;
+.btn-indigo {
+  @apply p-1 md:px-4 md:py-1 border border-indigo-600 rounded-full text-indigo-600 text-sm hover:text-white hover:bg-indigo-600 hover:shadow text-center;
 }
-.svg{
-    @apply w-5 mr-2 inline-block;
+.svg {
+  @apply w-5 mr-2 inline-block;
 }
 .btn-indigo span,
 .btn-success span,
 .btn-warning span,
-.btn-danger span{
-    @apply hidden md:inline-block;
+.btn-danger span {
+  @apply hidden md:inline-block;
 }
-.card{
-    @apply bg-white rounded h-screen px-32 py-4 w-full
+.card {
+  @apply bg-white rounded h-screen px-32 py-4 w-full;
 }
-.card-head h3{
-    @apply text-4xl text-center
+.card-head h3 {
+  @apply text-4xl text-center;
 }
-.days{
-    @apply flex justify-center mt-6
+.days {
+  @apply flex justify-center mt-6;
 }
-.days ul{
-    @apply grid text-center grid-cols-7 text-white bg-red-400 px-8 w-full
+.days ul li:first-child,
+.days ul li:last-child {
+  @apply text-cerise-200;
 }
-.numberDays{
-    @apply flex justify-center
+
+.days ul {
+  @apply grid text-center grid-cols-7 text-white bg-red-400 px-8 w-full;
 }
-.numberDays ul{
-    @apply grid text-center grid-cols-7 text-white bg-blue-400 py-4 px-10 w-full
+.numberDays {
+  @apply flex justify-center;
+}
+.numberDays ul {
+  @apply grid text-center grid-cols-7 text-white bg-blue-400 py-4 px-10 w-full;
+}
+.monthRow {
+  @apply grid grid-cols-2 mt-3;
+}
+
+.switchIcons {
+  @apply flex flex-row justify-between mt-3;
+}
+
+.activeDay {
+  @apply bg-white text-cerise-400 px-3 rounded-full;
+}
+.numberDays ul li:nth-child(7n-6) span,
+.numberDays ul li:nth-child(7n) span {
+  @apply text-cerise-200;
 }
