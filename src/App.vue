@@ -4,13 +4,12 @@
 
 
 <script>
-// import HeroesTemplate from './components/HeroesTemplate'
+
 import CalendarTemplate from './components/CalendarTemplate'
 export default {
   name: 'App',
   components: {
-  //  HeroesTemplate,
-   CalendarTemplate
+    CalendarTemplate
   },
   data:function(){
     return {}
