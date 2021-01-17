@@ -1,15 +1,23 @@
 <template>
-    <calendar-template></calendar-template>
+    <div class="wrapper md:px-40 sm:p-10">
+        <navbar-template></navbar-template>
+
+        <router-view></router-view>
+
+        <!-- <calendar-template></calendar-template> -->
+    </div>
 </template>
 
 
 <script>
 
-import CalendarTemplate from './components/CalendarTemplate'
+import NavbarTemplate from './components/NavbarTemplate'
+// import CalendarTemplate from './components/CalendarTemplate'
 export default {
   name: 'App',
   components: {
-    CalendarTemplate
+    NavbarTemplate,
+    // CalendarTemplate
   },
   data:function(){
     return {}

@@ -1,5 +1,4 @@
 <template>
-  <div class="wrapper md:px-40 md:py-36 sm:p-10">
       <div class="card">
         <div class="card-head text-blue-400">
           <h3>Calendar App</h3>
@@ -34,7 +33,6 @@
             </h5>
         </div>
       </div>
-  </div>
 </template>
 
 
