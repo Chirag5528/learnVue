@@ -4,6 +4,10 @@
         <div class="card-head">
           <h3>Calendar App</h3>
         </div>
+        <div class="calendar-top mt-4 grid grid-cols-2 justify-evenly">
+          <h4 class="text-3xl" v-text="thisMonth" ></h4>
+          <h4 class="text-3xl text-right" v-text="thisYear" ></h4>
+        </div>
         <div class="days">
             <ul>
                 <li v-for="(day,index) in days" class="text-2xl" :key='index' v-text="day"></li>
@@ -24,12 +28,28 @@ export default {
   name: 'CalendarTemplate',
   components: {},
   data:function(){
-    return {}
+    return {
+      
+    }
   },
   methods:{},
   computed:{
       days:function(){
-          return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+          let i = 0;
+          const d = new Date();
+          const days = [];
+          
+          for( i=0; i<7;i++ ){ 
+              console.log( d.getFullYear(),d.getMonth(), i )
+              days.push( new Date( d.getFullYear(),d.getMonth(), i + 1 ).toLocaleString('default', {'weekday':'short'}) )
+          }
+          return days;
+      },
+      thisMonth:function(){
+        return new Date().toLocaleString('default',{ 'month':'long' })
+      },
+      thisYear:function(){
+        return new Date().getFullYear()
       }
   }
 }
