@@ -1,8 +1,9 @@
 <template>
-    <div class="wrapper md:px-40 sm:p-10">
+    <div class="content">
         <navbar-template></navbar-template>
-
-        <router-view></router-view>
+        <div class="wrapper">
+          <router-view></router-view>
+        </div>
 
         <!-- <calendar-template></calendar-template> -->
     </div>

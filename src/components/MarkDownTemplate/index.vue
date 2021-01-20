@@ -1,0 +1,31 @@
+<template>
+    <div>
+        <h1 v-for="(item,index) in items" :key="index" v-text="item.name"></h1>
+    </div>
+</template>
+<script>
+export default {
+    name:"MardownTemplate",
+    data:function(){
+        return{
+            items:[
+                {
+                    name:"Chirag"
+                },
+                {
+                    name:"Chirag"
+                },
+                {
+                    name:"Chirag"
+                },
+                {
+                    name:"Chirag"
+                },
+                {
+                    name:"Chirag"
+                },
+            ]
+        }
+    }
+}
+</script>
