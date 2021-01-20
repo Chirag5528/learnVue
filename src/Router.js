@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeTemplate from '@/components/HomeTemplate'
+import DcHeroes from "@/components/DcHeroes/DcHeroes"
+import CalendarTemplate from "@/components/CalendarTemplate"
+import MarkDownTemplate from "@/components/MarkDownTemplate"
 export const routes = [
     {
         path:"/",
@@ -9,17 +12,17 @@ export const routes = [
     {
         path:"/heroes",
         name:"heroes",
-        component: /*webpackChunkName: Heroes*/ import("@/components/DcHeroes/DcHeroes")
+        component: DcHeroes
     },
     {
         path:"/calendar",
         name:"calendar",
-        component: /*webpackChunkName: Calendar*/ import("@/components/CalendarTemplate")
+        component: CalendarTemplate
     },
     {
         path:"/markdown",
         name:"markdown",
-        component: /*webpackChunkName: Markdown*/ import("@/components/MarkDownTemplate")
+        component: MarkDownTemplate
     },
 ]
 const router = createRouter({
