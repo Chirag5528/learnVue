@@ -6,7 +6,7 @@
         <div class="nav-lists">
             <ul class="nav-links grid" :class="[`grid-cols-${routes.length}`]">
                 <li class="nav-items text-xl" v-for="(route,index) in routes" :key="index">
-                    <router-link :to="{ name:route.name, }" >{{route.name}}</router-link>
+                    <router-link :to="{ name:route.name, }" >{{route.name.toUpperCase()}}</router-link>
                 </li>
             </ul>
         </div>
