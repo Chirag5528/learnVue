@@ -4,7 +4,7 @@
             <h2 class="text-3xl">Navbar</h2>
         </div>
         <div class="nav-lists">
-            <ul class="nav-links grid" :class="[`grid-cols-${routes.length}`]">
+            <ul class="nav-links grid auto-cols-auto grid-flow-col" >
                 <li class="nav-items text-xl" v-for="(route,index) in routes" :key="index">
                     <router-link :to="{ name:route.name, }" >{{route.name.toUpperCase()}}</router-link>
                 </li>

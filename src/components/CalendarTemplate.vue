@@ -1,5 +1,5 @@
 <template>
-      <div class="card">
+      <div class="card w-full">
         <div class="card-head text-blue-400">
           <h3>Calendar App</h3>
         </div>
