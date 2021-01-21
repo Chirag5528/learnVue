@@ -14,12 +14,13 @@
     </div>
 </template>
 <script>
+import {debounce} from '@/utility/mixins/debounce'
 export default {
     name:"MardownTemplate",
+    mixins:[debounce],
     data:function(){
         return{
             text:"",
-            timeout:"",
         }
     },
   created(){
@@ -32,14 +33,9 @@ export default {
   },
   methods:{
     changeText:function(e){
-      
       const task = () => (this.text = e.target.value)
       this.debounce(task,500)
     },
-    debounce:function(func,timeOut = 500){
-      this.timeout = setTimeout(func, timeOut);
-      clearTimeout(timeOut)
-    }
   }
 }
 </script>
