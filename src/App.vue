@@ -4,8 +4,6 @@
         <div class="wrapper">
           <router-view></router-view>
         </div>
-
-        <!-- <calendar-template></calendar-template> -->
     </div>
 </template>
 
@@ -13,12 +11,10 @@
 <script>
 
 import NavbarTemplate from './components/NavbarTemplate'
-// import CalendarTemplate from './components/CalendarTemplate'
 export default {
   name: 'App',
   components: {
     NavbarTemplate,
-    // CalendarTemplate
   },
   data:function(){
     return {}
