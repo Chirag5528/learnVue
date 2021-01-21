@@ -10,17 +10,17 @@ export const routes = [
     {
         path:"/heroes",
         name:"heroes",
-        component: /*webpackChunkName: DcHeroes*/ import("@/components/DcHeroes/DcHeroes")
+        component: () => /*webpackChunkName: DcHeroes*/ import("@/components/DcHeroes/DcHeroes")
     },
     {
         path:"/calendar",
         name:"calendar",
-        component: /*webpackChunkName: CalendarTemplate*/ import("@/components/CalendarTemplate")
+        component: () => /*webpackChunkName: CalendarTemplate*/ import("@/components/CalendarTemplate")
     },
     {
         path:"/markdown",
         name:"markdown",
-        component: /*webpackChunkName: MarkDownTemplate*/ import("@/components/MarkDownTemplate")
+        component: () => /*webpackChunkName: MarkDownTemplate*/ import("@/components/MarkDownTemplate")
     },
 ]
 const router = createRouter({
