@@ -188,6 +188,8 @@ module.exports = {
       72: '18rem',
       80: '20rem',
       96: '24rem',
+      120: '30rem',
+      160: '40rem',
     },
     animation: {
       none: 'none',

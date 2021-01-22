@@ -22,6 +22,11 @@ export const routes = [
         name:"markdown",
         component: () => /*webpackChunkName: MarkDownTemplate*/ import("@/components/MarkDownTemplate")
     },
+    {
+        path:"/sliders",
+        name:"sliders",
+        component: () => /*webpackChunkName: SliderTemplate*/ import("@/components/SliderTemplate")
+    },
 ]
 const router = createRouter({
     history:createWebHistory(),
