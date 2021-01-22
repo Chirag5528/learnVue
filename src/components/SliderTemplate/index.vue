@@ -1,7 +1,14 @@
 <template>
     <div class="flex flex-wrap w-full flex-row h-screen">
-        <div class="absolute w-full" v-for="(image,index) in images" :key="index">
-            <div class="h-120" :class="image" v-if="currentSlide === index"></div>
+        <div 
+            class="absolute w-full" 
+            v-for="(image,index) in images" 
+            :key="index">
+            <div 
+                class="h-120" 
+                :class="image" 
+                v-if="currentSlide === index">
+            </div>
         </div>
     </div>
 </template>
