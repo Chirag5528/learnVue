@@ -27,7 +27,13 @@
             </div>
           </div>
 <!--Anchors-->
-
+<!--Bullets-->
+          <div class="bullets absolute top-0 h-full w-full flex justify-center items-end py-2">
+            <ul class="list-disc text-white grid grid-flow-col gap-6 text-xl">
+              <li class="cursor-pointer" @click="setCurrentSlide(count)" v-for="count in images.length" :key="count"></li>
+            </ul>
+          </div>
+<!--Bullets-->
         </div>
     </div>
 </template>
@@ -52,7 +58,9 @@ export default {
         },
       sliderCount:function(count){
           this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide+count
-      }
+      },
+      setCurrentSlide:function(count){
+          this.currentSlide = count
     },
     mounted(){
         this.changeSlider()
