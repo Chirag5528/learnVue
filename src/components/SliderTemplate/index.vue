@@ -16,11 +16,11 @@
 <!--Anchors-->
           <div class="anchors absolute top-0 h-full w-full flex justify-between items-center px-4">
             <div class="left-anchor w-8 h-8 text-white" @click="sliderCount(-1)">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
               </svg>
             </div>
-            <div class="right-anchor w-8 h-8 text-white" @click="sliderCount(+1)">
+            <div class="right-anchor w-8 h-8 text-white" @click="sliderCount(1)" >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
               </svg>
@@ -29,8 +29,8 @@
 <!--Anchors-->
 <!--Bullets-->
           <div class="bullets absolute top-0 h-full w-full flex justify-center items-end py-2">
-            <ul class="list-disc text-white grid grid-flow-col gap-6 text-xl">
-              <li class="cursor-pointer" @click="setCurrentSlide(count)" v-for="count in images.length" :key="count"></li>
+            <ul class="list-disc grid grid-flow-col gap-6 text-xl">
+              <li class="cursor-pointer" :class="[ currentSlide == count - 1 ? 'text-gray-600' : 'text-white']" @click="setCurrentSlide(count)" v-for="count in images.length" :key="count"></li>
             </ul>
           </div>
 <!--Bullets-->
@@ -50,20 +50,22 @@ export default {
     methods:{
 
         changeSlider:function(){
-          this.currentSlide = 1
-          this.image = ''
             this.interval = setInterval(() => {
                 this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide+1
             }, 6000)
         },
       sliderCount:function(count){
-          this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide+count
+          console.log("THIS")
+          this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide + count
+          // console.log( this.currentSlide )
       },
-      setCurrentSlide:function(count){
-          this.currentSlide = count
+      setCurrentSlide:function(count) {
+          this.currentSlide = count - 1
+      }
     },
     mounted(){
-        this.changeSlider()
+      // this.sliderCount()
+        // this.changeSlider()
     },
     beforeMount(){
         this.interval = ''
