@@ -53,25 +53,24 @@ export default {
           this.currentSlide = 1
             this.interval = setInterval(() => {
                 this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide+1
-            }, 6000)
+            }, 2000)
         },
       sliderCount:function(count){
-          console.log("THIS")
-          this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide + count
+
+        this.currentSlide = (this.currentSlide >= 2 ) ? 0 : this.currentSlide + count
       },
       setCurrentSlide:function(count) {
           this.currentSlide = count - 1
       },
       stopInterval:function(){
-          console.log("Interval Set to blank");
-          console.log(this.interval)
           clearInterval(this.interval)
           this.interval = ''
       },
       startInterval:function(){
+        this.stopInterval();
         this.interval = setInterval(() => {
           this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide+1
-        }, 6000)
+        }, 2000)
       }
     },
     mounted(){
