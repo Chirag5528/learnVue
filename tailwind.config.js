@@ -209,6 +209,9 @@ module.exports = {
       'gradient-to-bl': 'linear-gradient(to bottom left, var(--tw-gradient-stops))',
       'gradient-to-l': 'linear-gradient(to left, var(--tw-gradient-stops))',
       'gradient-to-tl': 'linear-gradient(to top left, var(--tw-gradient-stops))',
+      "slide-1":"url('/assets/images/roses.jpg')",
+      "slide-2":"url('/assets/images/tree-roses.jpg')",
+      "slide-3":"url('/assets/images/waterfall.jpg')",
     },
     backgroundOpacity: (theme) => theme('opacity'),
     backgroundPosition: {
