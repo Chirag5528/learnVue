@@ -1,6 +1,6 @@
 <template>
     <div class="slider-wrapper">
-        <div class="flex flex-wrap w-full h-120 flex-row relative">
+        <div class="flex flex-wrap w-full h-120 flex-row relative" @mouseenter="stopInterval" @mouseleave="startInterval">
           <div
               class="absolute w-full h-full"
               v-for="(image,index) in images"
@@ -15,7 +15,7 @@
           </div>
 <!--Anchors-->
           <div class="anchors absolute top-0 h-full w-full flex justify-between items-center px-4">
-            <div class="left-anchor w-8 h-8 text-white" @click="sliderCount(-1)">
+            <div class="left-anchor w-8 h-8 text-white" @click="sliderCount(1)">
               <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
               </svg>
@@ -50,6 +50,7 @@ export default {
     methods:{
 
         changeSlider:function(){
+          this.currentSlide = 1
             this.interval = setInterval(() => {
                 this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide+1
             }, 6000)
@@ -57,15 +58,25 @@ export default {
       sliderCount:function(count){
           console.log("THIS")
           this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide + count
-          // console.log( this.currentSlide )
       },
       setCurrentSlide:function(count) {
           this.currentSlide = count - 1
+      },
+      stopInterval:function(){
+          console.log("Interval Set to blank");
+          console.log(this.interval)
+          clearInterval(this.interval)
+          this.interval = ''
+      },
+      startInterval:function(){
+        this.interval = setInterval(() => {
+          this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide+1
+        }, 6000)
       }
     },
     mounted(){
       // this.sliderCount()
-        // this.changeSlider()
+        this.changeSlider()
     },
     beforeMount(){
         this.interval = ''
@@ -78,5 +89,8 @@ export default {
 }
 .fade-enter-from, .fade-leave-to{
   opacity: 0;
+}
+.anchors{
+  z-index: 2;
 }
 </style>
