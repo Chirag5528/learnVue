@@ -1,9 +1,10 @@
 <template>
     <div class="content">
-        <navbar-template></navbar-template>
+        <navbar-template @loginButtonClicked="toggleModal"></navbar-template>
         <div class="wrapper">
           <router-view></router-view>
         </div>
+        <LoginModal ref='modal' />
     </div>
 </template>
 
@@ -11,15 +12,21 @@
 <script>
 
 import NavbarTemplate from './components/NavbarTemplate'
+import LoginModal from './components/LoginModal'
 export default {
   name: 'App',
   components: {
     NavbarTemplate,
+    LoginModal
   },
   data:function(){
     return {}
   },
-  methods:{},
+  methods:{
+    toggleModal:function(){
+      this.$refs['modal'].toggleModal();
+    }
+  },
 }
 </script>
 

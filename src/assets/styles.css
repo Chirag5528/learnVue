@@ -71,3 +71,15 @@
 .numberDays ul li:nth-child(7n) span {
   @apply text-cerise-200;
 }
+.modal-backdrop{
+  @apply z-10 h-screen w-screen bg-gray-600 fixed top-0;
+}
+.modal{
+  @apply absolute h-screen w-screen flex justify-center items-center top-0;
+}
+.modal-content{
+  @apply bg-white rounded-md overflow-hidden w-full max-w-2xl h-full max-h-120 shadow-lg z-10
+}
+.modal-header{
+  @apply border-b-2 px-10 w-full py-4 grid grid-cols-2 items-center;
+}

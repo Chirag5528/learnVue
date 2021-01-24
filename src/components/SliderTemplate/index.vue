@@ -1,6 +1,6 @@
 <template>
-    <div class="slider-wrapper">
-        <div class="flex flex-wrap w-full h-120 flex-row relative" @mouseenter="stopInterval" @mouseleave="startInterval">
+    <div class="slider-wrapper w-full overflow-hidden">
+        <div class="w-full h-120 flex-row relative" @mouseenter="stopInterval" @mouseleave="startInterval">
           <div
               class="absolute w-full h-full"
               v-for="(image,index) in images"
@@ -29,8 +29,8 @@
 <!--Anchors-->
 <!--Bullets-->
           <div class="bullets absolute top-0 h-full w-full flex justify-center items-end py-2">
-            <ul class="list-disc grid grid-flow-col gap-6 text-xl">
-              <li class="cursor-pointer" :class="[ currentSlide == count - 1 ? 'text-gray-600' : 'text-white']" @click="setCurrentSlide(count)" v-for="count in images.length" :key="count"></li>
+            <ul class="list-disc grid grid-flow-col gap-6 text-2xl">
+              <li class="cursor-pointer" :class="[ currentSlide == count - 1 ? 'text-gray-600 shadow-lg' : 'text-white']" @click="setCurrentSlide(count)" v-for="count in images.length" :key="count"></li>
             </ul>
           </div>
 <!--Bullets-->
@@ -46,7 +46,6 @@ export default {
             images:[],
             image:'',
             checkKeyPress:'',
-
         }
     },
     methods:{
@@ -70,14 +69,15 @@ export default {
             }, 2000)
         },
         changeSlidesWithArrows:function(){
-            this.checkKeyPress = window.addEventListener('keydown',e =>{
-                const code = e.key
-                if( code === "ArrowRight" ){
-                    this.setCurrentSlide(1)
-                }else if( code === "ArrowLeft" ){
-                    this.setCurrentSlide(-1)
-                }
-            },true)
+            this.checkKeyPress = window.addEventListener('keydown',this.checkKeyPressed,true)
+        },
+        checkKeyPressed:function(e){
+            const code = e.key
+            if( code === "ArrowRight" ){
+                this.setCurrentSlide(1)
+            }else if( code === "ArrowLeft" ){
+                this.setCurrentSlide(-1)
+            }
         }
     },
     mounted(){
@@ -88,15 +88,25 @@ export default {
     beforeMount(){
         this.interval = ''
     },
+    beforeUnmount(){
+        window.removeEventListener('keydown',this.checkKeyPressed,true)
+    }
 }
 </script>
 <style>
 .fade-enter-active, .fade-leave-active{
-  transition: opacity 0.5s ease;
+  transition: all 1s ease-in-out;
 }
 .fade-enter-from, .fade-leave-to{
-  opacity: 0;
+  /* opacity: 0; */
 }
+.fade-enter-from{
+  transform: translateX(-100%);
+}
+.fade-leave-to{
+  transform: translateX(100%);
+}
+
 .anchors{
   z-index: 2;
 }
