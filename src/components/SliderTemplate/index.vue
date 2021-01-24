@@ -15,12 +15,12 @@
           </div>
 <!--Anchors-->
           <div class="anchors absolute top-0 h-full w-full flex justify-between items-center px-4">
-            <div class="left-anchor w-8 h-8 text-white" @click="sliderCount(1)">
+            <div class="left-anchor w-8 h-8 text-white" @click="setCurrentSlide(-1)">
               <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
               </svg>
             </div>
-            <div class="right-anchor w-8 h-8 text-white" @click="sliderCount(1)" >
+            <div class="right-anchor w-8 h-8 text-white" @click="setCurrentSlide(1)" >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
               </svg>
@@ -43,43 +43,51 @@ export default {
         return{
             interval:"",
             currentSlide:0,
-            images:['alexandr.jpg','pixabay.jpg','tim-mossholder.jpg'],
-            image:''
+            images:[],
+            image:'',
+            checkKeyPress:'',
+
         }
     },
     methods:{
-
-        changeSlider:function(){
-          this.currentSlide = 1
+        setCurrentSlide:function(count = 1) {              
+            if( count == 1 ){
+                this.currentSlide = (this.currentSlide >= this.images.length - 1 ) ? 0 : this.currentSlide + count
+            }else{
+                this.currentSlide = (this.currentSlide <= 0 ) ? this.images.length - 1 : this.currentSlide + count
+                console.log( count + "=====" + this.currentSlide );
+            }
+            window.removeEventListener('keydown',this.checkKeyPress,true)
+        },
+        stopInterval:function(){
+            clearInterval(this.interval)
+            this.interval = ''
+        },
+        startInterval:function(){
+            this.stopInterval();
             this.interval = setInterval(() => {
-                this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide+1
+                this.setCurrentSlide()
             }, 2000)
         },
-      sliderCount:function(count){
-
-        this.currentSlide = (this.currentSlide >= 2 ) ? 0 : this.currentSlide + count
-      },
-      setCurrentSlide:function(count) {
-          this.currentSlide = count - 1
-      },
-      stopInterval:function(){
-          clearInterval(this.interval)
-          this.interval = ''
-      },
-      startInterval:function(){
-        this.stopInterval();
-        this.interval = setInterval(() => {
-          this.currentSlide = (this.currentSlide >= 2) ? 0 : this.currentSlide+1
-        }, 2000)
-      }
+        changeSlidesWithArrows:function(){
+            this.checkKeyPress = window.addEventListener('keydown',e =>{
+                const code = e.key
+                if( code === "ArrowRight" ){
+                    this.setCurrentSlide(1)
+                }else if( code === "ArrowLeft" ){
+                    this.setCurrentSlide(-1)
+                }
+            },true)
+        }
     },
     mounted(){
-      // this.sliderCount()
-        this.changeSlider()
+        this.startInterval()
+        this.changeSlidesWithArrows()
+        this.images = ['alexandr.jpg','pixabay.jpg','tim-mossholder.jpg']
     },
     beforeMount(){
         this.interval = ''
-    }
+    },
 }
 </script>
 <style>
