@@ -293,6 +293,7 @@ module.exports = {
     },
     fontFamily: {
       nunito:'Nunito',
+      fraunces:"Fraunces",
       sans: [
         'ui-sans-serif',
         'system-ui',
@@ -503,6 +504,7 @@ module.exports = {
       '1/3': '33.333333%',
       '2/3': '66.666667%',
       '1/4': '25%',
+      '1/5': '20%',
       '2/4': '50%',
       '3/4': '75%',
       full: '100%',
