@@ -1,13 +1,13 @@
 <template>
   <div class="modal-wrapper">
     <div
-      class="modal-backdrop"
+      class="modal-backdrop opacity-10"
       :class="[isVisible ? 'visible' : 'invisible']"
       @click="toggleModal"
     ></div>
     <div class="modal" :class="[isVisible ? 'visible' : 'invisible']">
       <div class="modal-content shadow-md hover:shadow-2xl">
-        <div class="modal-body px-8 py-14">
+        <div class="modal-body px-8 py-8">
           <!-- Modal Title -->
           <div class="modal-logo w-full h-full">
               <h2 class="text-fraunces text-center text-3xl italic text-indigo-500">Chaggy</h2>
@@ -24,27 +24,31 @@
           <!-- Write your content here -->
           <div class="form-group flex flex-col">
             <div class="emailLabel relative">
-                <input type="email" name="email" class="email form-control w-full p-3 rounded border border-gray-400" id="email" v-model="form.email">
-                <div class="emailText">Email</div>
+                <input type="email" name="email" class="email border rounded outline-none border-gray-400 focus:border-indigo-600 focus:border-2 w-full p-3 z-10" id="email" placeholder=" " v-model="form.email" required>
+                <div class="emailText text-gray-400">Email</div>
             </div>
-            <div class="forgotEmail">
-                <span class="forgotEmail">Forgot email?</span>
+            <div class="forgotEmail mt-2">
+                <span class="font-semibold text-sm text-indigo-600 hover:underline cursor-pointer">Forgot email?</span>
             </div>
           </div>
           
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" class="form-control" placeholder="Enter Password" id="password" v-model="form.password">
-            <div class="showPassword">
-                <label for="showPasswordCheckBox"><input type="checkbox" class="showPasswordCheckBox" id='showPasswordCheckBox'>Show Password</label>
+          <div class="form-group mt-6 mb-6">
+            <div class="emailLabel relative">
+              <input type="password" name="password" class="email border rounded outline-none border-gray-400 focus:border-indigo-600 focus:border-2 w-full p-3 z-10" placeholder=" " id="password" v-model="form.password">
+            <div class="emailText text-gray-400">Password</div>
+            </div>
+            <div class="showPassword mt-3 flex flex-row justify-between">
+                <p>
+                  <label for="showPasswordCheckBox"><input type="checkbox" class="showPasswordCheckBox" id='showPasswordCheckBox'><span class="ml-2">Show Password</span></label>
+                </p>
+                <p class="font-semibold text-sm text-indigo-600 hover:underline cursor-pointer">Forgot Password</p>
             </div>
           </div>
-
           <div class="submit-button">
-              <button class="btn w-full">Log In</button>
+              <button class="btn w-full btn-indigo">Log In</button>
           </div>
           <div class="forgot-password">
-              <p class="text-blue-500 hover:underline cursor-pointer">Forgot Password</p>
+              
           </div>
 
 
@@ -87,9 +91,12 @@ export default {
   transform: translateX(100%);
 }
 .emailLabel .emailText{
-    @apply transition-all duration-200 absolute inset-y-2 inset-x-3 p-1 w-16 h-12 text-xl;
+    @apply transition-all duration-100 ease-in absolute inset-y-2 px-4 text-center align-middle	w-auto h-5 text-lg z-0 font-medium;
 }
 .email:focus~.emailText{
-    @apply inset-px -top-3.5 inset-x-3 bg-white;
+  @apply bg-white transform -translate-y-5 scale-75	text-indigo-600 px-3;
+}
+.email:not(:placeholder-shown)~.emailText{
+    @apply bg-white transform -translate-y-5 scale-75	text-indigo-600 px-3;
 }
 </style>
