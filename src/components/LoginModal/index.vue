@@ -1,7 +1,7 @@
 <template>
   <div class="modal-wrapper">
     <div
-      class="modal-backdrop opacity-10"
+      class="modal-backdrop opacity-70"
       :class="[isVisible ? 'visible' : 'invisible']"
       @click="toggleModal"
     ></div>
@@ -24,7 +24,7 @@
           <!-- Write your content here -->
           <div class="form-group flex flex-col">
             <div class="emailLabel relative">
-                <input type="email" name="email" class="email border rounded outline-none border-gray-400 focus:border-indigo-600 focus:border-2 w-full p-3 z-10" id="email" placeholder=" " v-model="form.email" required>
+                <input type="email" name="email" class="email border rounded outline-none border-gray-400 focus:border-indigo-600 focus:border-2 w-full p-3" id="email" placeholder=" " v-model="form.email" required>
                 <div class="emailText text-gray-400">Email</div>
             </div>
             <div class="forgotEmail mt-2">
@@ -34,7 +34,7 @@
           
           <div class="form-group mt-6 mb-6">
             <div class="emailLabel relative">
-              <input type="password" name="password" class="email border rounded outline-none border-gray-400 focus:border-indigo-600 focus:border-2 w-full p-3 z-10" placeholder=" " id="password" v-model="form.password">
+              <input type="password" name="password" class="email border rounded outline-none border-gray-400 focus:border-indigo-600 focus:border-2 w-full p-3" placeholder=" " id="password" v-model="form.password">
             <div class="emailText text-gray-400">Password</div>
             </div>
             <div class="showPassword mt-3 flex flex-row justify-between">
@@ -45,7 +45,7 @@
             </div>
           </div>
           <div class="submit-button">
-              <button class="btn w-full btn-indigo">Log In</button>
+              <button @click="$emit('loginButtonPressed',form)" class="btn w-full btn-indigo cursor-pointer">Log In</button>
           </div>
           <div class="forgot-password">
               
@@ -73,10 +73,14 @@ export default {
   methods: {
     toggleModal: function() {
       console.log("MODAL TOGGLED");
+      this.form.email = ''
+      this.form.password = ''
       this.isVisible = !this.isVisible;
     },
   },
-  mounted() {},
+  mounted() {
+    
+  },
 };
 </script>
 <style>
@@ -91,7 +95,7 @@ export default {
   transform: translateX(100%);
 }
 .emailLabel .emailText{
-    @apply transition-all duration-100 ease-in absolute inset-y-2 px-4 text-center align-middle	w-auto h-5 text-lg z-0 font-medium;
+    @apply transition-all duration-100 ease-in absolute inset-y-2 px-4 text-center align-middle	w-auto h-5 text-lg font-medium;
 }
 .email:focus~.emailText{
   @apply bg-white transform -translate-y-5 scale-75	text-indigo-600 px-3;

@@ -1,15 +1,23 @@
 <template>
     <div class="content">
-        <navbar-template @loginButtonClicked="toggleModal"></navbar-template>
+        <navbar-template :isLoggedIn="isLoggedIn" @loginButtonClicked="toggleModal" @logOutButtonClicked="tryLogOut"></navbar-template>
         <div class="wrapper">
           <router-view></router-view>
         </div>
-        <LoginModal ref='modal' />
+        <LoginModal ref='modal' @login-button-pressed="tryLogIn" />
     </div>
 </template>
 
 
 <script>
+
+import firebase from "firebase/app";
+
+// Add the Firebase services that you want to use
+import "firebase/auth";
+
+
+import firebaseConfig from "@/utility/firebase/firebase";
 
 import NavbarTemplate from './components/NavbarTemplate'
 import LoginModal from './components/LoginModal'
@@ -20,12 +28,55 @@ export default {
     LoginModal
   },
   data:function(){
-    return {}
+    return {
+      user:'',
+      isLoggedIn:false
+    }
   },
   methods:{
     toggleModal:function(){
       this.$refs['modal'].toggleModal();
+    },
+    tryLogIn:function(data){
+      firebase.auth().signInWithEmailAndPassword( data.email,data.password )
+      .then((res) => {
+        console.log(res);
+        this.isLoggedIn = true
+        this.toggleModal()
+      })
+      .catch( (err) => {
+        console.log(err)
+      })
+    },
+    tryLogOut:function(){
+      firebase
+      .auth()
+        .signOut()
+          .then( (res) => { 
+            console.log(res)
+            this.isLoggedIn = false 
+          })
+          .catch( (err) =>{
+            console.log(err)
+          })
+    },
+    checkUserLogin:function(){
+      firebase.auth().onAuthStateChanged( (user) => {
+        if( user ){
+          this.isLoggedIn = true
+          this.user = user
+        }else{
+          // alert("No User Is Logged In")
+        }
+
+      })
     }
+  },
+  mounted(){
+    if( ! firebase.apps.length  ){
+      firebase.initializeApp(firebaseConfig)
+    }
+    this.checkUserLogin()
   },
 }
 </script>
