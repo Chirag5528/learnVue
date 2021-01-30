@@ -4,7 +4,7 @@
         <div class="wrapper">
           <router-view></router-view>
         </div>
-        <LoginModal ref='modal' @login-button-pressed="tryLogIn" />
+        <LoginModal ref='modal' @login-button-pressed="tryLogIn" @try-google-login="tryGoogleLogin" />
     </div>
 </template>
 
@@ -15,8 +15,6 @@ import firebase from "firebase/app";
 
 // Add the Firebase services that you want to use
 import "firebase/auth";
-
-
 import firebaseConfig from "@/utility/firebase/firebase";
 
 import NavbarTemplate from './components/NavbarTemplate'
@@ -70,6 +68,30 @@ export default {
         }
 
       })
+    },
+    tryGoogleLogin:function(){
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth()
+          .signInWithPopup(provider)
+          .then(() => {
+            /** @type {firebase.auth.OAuthCredential} */
+            // var credential = result.credential;
+
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            // var token = credential.accessToken;
+            // The signed-in user info.
+            // var user = result.user;
+            // ...
+          }).catch(() => {
+        // Handle Errors here.
+        // var errorCode = error.code;
+        // var errorMessage = error.message;
+        // The email of the user's account used.
+        // var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        // var credential = error.credential;
+        // ...
+      });
     }
   },
   mounted(){

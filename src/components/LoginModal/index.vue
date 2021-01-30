@@ -47,6 +47,14 @@
           <div class="submit-button">
               <button @click="$emit('loginButtonPressed',form)" class="btn w-full btn-indigo cursor-pointer">Log In</button>
           </div>
+          <div class="google-login border border-indigo-600 rounded-2xl py-1 my-1 hover:bg-indigo-600 group">
+            <button class="google-login__button w-full flex justify-center items-center text-sm">
+              <div class="google-login__icon-wrapper w-5 h-auto mr-1">
+                <img class="google-login__icon w-full h-full object-cover" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+              </div>
+              <div class="google-login__text text-indigo-600 group-hover:text-white" @click="$emit('tryGoogleLogin')">Login With Google</div>
+            </button>
+          </div>
           <div class="forgot-password">
               
           </div>
